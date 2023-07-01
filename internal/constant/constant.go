@@ -8,7 +8,7 @@ const (
 	KeyDataSourceCtx  ctxKey = "DATA_SOURCE"
 	KeyUserIPCtx      ctxKey = "USERIP"
 	KeyUserCountryCtx ctxKey = "USERCOUNTRY"
-	KeyUserCityCtx    ctxKey = "USERCity"
+	KeyUserCityCtx    ctxKey = "USERCITY"
 
 	SystemID = string("SYSTEM")
 	GuestID  = string("GUEST")

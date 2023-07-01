@@ -75,5 +75,10 @@ func NewHTTPServer() *echo.Echo {
 
 	e.Use(middleware.RecoverWithConfig(recoverConfig))
 
+	e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
+		AllowOrigins: []string{"*"},
+		AllowHeaders: []string{"*"},
+	}))
+
 	return e
 }
