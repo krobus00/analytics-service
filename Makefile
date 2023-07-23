@@ -79,7 +79,7 @@ endif
 
 # make image VERSION="vx.x.x"
 image:
-	docker buildx build -t ${DOCKER_IMAGE_NAME}:${VERSION} . -f ./deployments/Dockerfile
+	docker build -t ${DOCKER_IMAGE_NAME}:${VERSION} . -f ./deployments/Dockerfile
 
 # make push-image VERSION="vx.x.x"
 push-image:
@@ -92,7 +92,10 @@ docker-build-push: image push-image
 # make deploy VERSION="vx.x.x" NAMESPACE="staging"
 # make deploy VERSION="vx.x.x" NAMESPACE="staging" CONFIG="./config-staging.yml"
 deploy:
-	@helm upgrade --install $(SERVICE_NAME) ./deployments/helm/$(SERVICE_NAME) --set-file appConfig="${CONFIG}" --set app.container.version="${VERSION}" -n ${NAMESPACE}
+	@helm upgrade --install $(SERVICE_NAME) ./deployments/helm/analytics-service \
+	--set-file configmap.values="${CONFIG}" \
+	--set image.tag="${VERSION}" \
+	-n ${NAMESPACE}
 
 # make coverage
 coverage:

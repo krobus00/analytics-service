@@ -1,0 +1,13 @@
+apiVersion: v2
+name: analytics
+description: krobot analytics service
+type: application
+version: 0.1.0
+appVersion: "1.0.0"
+keywords:
+  - analytics
+  - go
+home: https://github.com/krobus00/analytics-service
+maintainers:
+  - name: Michael Putera Wardana
+    url: https://github.com/krobus00
