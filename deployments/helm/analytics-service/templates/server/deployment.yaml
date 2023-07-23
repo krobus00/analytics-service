@@ -25,6 +25,8 @@ spec:
           command: ["/app/bin/analytics-service", "server"]
           ports:
             - containerPort: {{ .Values.service.port }}
+          resources:
+{{ toYaml .Values.resources | indent 12 }}
           volumeMounts:
             - name: {{ include "analytics-service.fullname" . }}
               mountPath: /app/config.yml
